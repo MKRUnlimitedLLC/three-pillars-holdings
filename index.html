@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Three Pillars Holdings LLC — Draft</title>
+  <meta name="description" content="Family holding company focused on long-term stewardship. Draft placeholder site." />
+  <style>
+    :root {
+      --navy: #0D1B2D;
+      --slate: #3B4754;
+      --gold: #C9A46A;
+      --stone: #E8E6E1;
+      --white: #FBFBFA;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: var(--navy);
+      background: var(--stone);
+      line-height: 1.6;
+      font-size: 1.05rem;
+    }
+    a { color: var(--navy); text-decoration: none; }
+    a:hover { color: var(--gold); }
+    .wrap { max-width: 980px; margin: 0 auto; padding: 0 1.5rem; }
+
+    /* Draft watermark */
+    body::before {
+      content: "DRAFT";
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-28deg);
+      font-size: clamp(4rem, 18vw, 10rem);
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      color: rgba(13, 27, 45, 0.04);
+      pointer-events: none;
+      z-index: 0;
+      white-space: nowrap;
+    }
+    header, main, footer { position: relative; z-index: 1; }
+
+    /* Nav */
+    header {
+      background: var(--navy);
+      color: var(--stone);
+      padding: 1.1rem 0;
+      border-bottom: 3px solid var(--gold);
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: var(--stone);
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+    .brand:hover { color: var(--gold); }
+    .brand svg { flex-shrink: 0; }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    nav a { color: var(--stone); font-size: 0.95rem; opacity: 0.9; }
+    nav a:hover { color: var(--gold); opacity: 1; }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(165deg, var(--navy) 0%, #152536 60%, #1a2f42 100%);
+      color: var(--stone);
+      padding: 5rem 0 4.5rem;
+      text-align: center;
+    }
+    .hero-mark { margin-bottom: 1.75rem; }
+    .hero h1 {
+      font-size: clamp(1.75rem, 4vw, 2.6rem);
+      font-weight: 650;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.85rem;
+      line-height: 1.2;
+    }
+    .tagline {
+      font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+      color: var(--gold);
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.65rem;
+    }
+    .sub-values {
+      font-size: 0.9rem;
+      opacity: 0.65;
+      letter-spacing: 0.08em;
+      margin-bottom: 1.5rem;
+    }
+    .hero p.lede {
+      max-width: 34em;
+      margin: 0 auto;
+      opacity: 0.88;
+      font-size: 1.08rem;
+    }
+
+    /* Sections */
+    section { padding: 4rem 0; }
+    section + section { border-top: 1px solid rgba(59, 71, 84, 0.15); }
+    .section-label {
+      display: inline-block;
+      font-size: 0.75rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+    h2 {
+      font-size: clamp(1.4rem, 3vw, 1.85rem);
+      font-weight: 650;
+      letter-spacing: -0.015em;
+      margin-bottom: 1rem;
+      color: var(--navy);
+    }
+    .prose { max-width: 38em; color: var(--slate); }
+    .prose p + p { margin-top: 1rem; }
+
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2.25rem;
+    }
+    .pillar-card {
+      background: var(--white);
+      border: 1px solid rgba(59, 71, 84, 0.12);
+      border-top: 3px solid var(--gold);
+      padding: 1.75rem 1.5rem;
+      border-radius: 2px;
+    }
+    .pillar-card h3 {
+      font-size: 1.05rem;
+      color: var(--navy);
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .pillar-card p { color: var(--slate); font-size: 0.98rem; }
+
+    /* Contact CTA */
+    .cta {
+      background: var(--navy);
+      color: var(--stone);
+      padding: 3.5rem 0;
+      text-align: center;
+    }
+    .cta h2 { color: var(--stone); margin-bottom: 0.75rem; }
+    .cta p { opacity: 0.85; margin-bottom: 1.5rem; max-width: 32em; margin-left: auto; margin-right: auto; }
+    .cta-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+    }
+    .cta a.btn {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--navy);
+      padding: 0.7rem 1.4rem;
+      font-weight: 600;
+      font-size: 0.95rem;
+      border-radius: 2px;
+    }
+    .cta a.btn:hover { background: #d4b47a; color: var(--navy); }
+    .cta a.ghost {
+      display: inline-block;
+      border: 1px solid rgba(232, 230, 225, 0.35);
+      color: var(--stone);
+      padding: 0.7rem 1.4rem;
+      font-size: 0.95rem;
+      border-radius: 2px;
+    }
+    .cta a.ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* Footer */
+    footer {
+      background: #08121c;
+      color: rgba(232, 230, 225, 0.7);
+      padding: 2rem 0;
+      font-size: 0.88rem;
+      text-align: center;
+    }
+    footer .entity { color: var(--stone); font-weight: 500; margin-bottom: 0.35rem; }
+    footer .meta { opacity: 0.75; }
+    footer .draft-note {
+      margin-top: 0.85rem;
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: 0.55;
+    }
+
+    @media (max-width: 560px) {
+      .hero { padding: 3.5rem 0 3rem; }
+      section { padding: 3rem 0; }
+      nav ul { gap: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="#top" aria-label="Three Pillars Holdings home">
+        <svg width="36" height="32" viewBox="0 0 36 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="2" y="8" width="6" height="22" fill="#C9A46A"/>
+          <polygon points="2,8 5,2 8,8" fill="#E8E6E1"/>
+          <rect x="15" y="4" width="6" height="26" fill="#C9A46A"/>
+          <polygon points="15,4 18,0 21,4" fill="#E8E6E1"/>
+          <rect x="28" y="10" width="6" height="20" fill="#C9A46A"/>
+          <polygon points="28,10 31,5 34,10" fill="#E8E6E1"/>
+        </svg>
+        <span>Three Pillars Holdings</span>
+      </a>
+      <nav aria-label="Primary">
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#approach">Approach</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="wrap">
+        <div class="hero-mark" aria-hidden="true">
+          <svg width="72" height="64" viewBox="0 0 36 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2" y="8" width="6" height="22" fill="#C9A46A"/>
+            <polygon points="2,8 5,2 8,8" fill="#E8E6E1"/>
+            <rect x="15" y="4" width="6" height="26" fill="#C9A46A"/>
+            <polygon points="15,4 18,0 21,4" fill="#E8E6E1"/>
+            <rect x="28" y="10" width="6" height="20" fill="#C9A46A"/>
+            <polygon points="28,10 31,5 34,10" fill="#E8E6E1"/>
+          </svg>
+        </div>
+        <p class="tagline">Structure · Stability · Goodwill</p>
+        <h1>Built to Endure. Designed to Grow.</h1>
+        <p class="sub-values">Truth · Stewardship · Care</p>
+        <p class="lede">A family holding company devoted to patient ownership and long-term stewardship of companies and products under one roof.</p>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="wrap">
+        <span class="section-label">About</span>
+        <h2>Holding, not storefront</h2>
+        <div class="prose">
+          <p>Three Pillars Holdings LLC is a private family holding company. We provide structure and continuity for businesses and product efforts that sit within the family stack.</p>
+          <p>This is not a consumer storefront. Day-to-day operations and customer-facing work live elsewhere; here, the focus is stewardship, clarity of purpose, and lasting foundations.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="approach">
+      <div class="wrap">
+        <span class="section-label">Approach</span>
+        <h2>Three ideas that guide us</h2>
+        <div class="pillars">
+          <article class="pillar-card">
+            <h3>Structure</h3>
+            <p>Clear roles, durable arrangements, and room for operating companies to do their work well.</p>
+          </article>
+          <article class="pillar-card">
+            <h3>Stability</h3>
+            <p>Decisions oriented toward the long view—measured pace, careful growth, fewer distractions.</p>
+          </article>
+          <article class="pillar-card">
+            <h3>Goodwill</h3>
+            <p>Relationships and reputation matter. We aim to leave things better than we found them.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" id="contact">
+      <div class="wrap">
+        <h2>Get in touch</h2>
+        <p>Inquiries are welcome via the domain. For general or direct questions, reach us at the addresses below.</p>
+        <div class="cta-links">
+          <a class="btn" href="mailto:contact@threepillarsholdingsllc.com">contact@threepillarsholdingsllc.com</a>
+          <a class="ghost" href="mailto:matt@threepillarsholdingsllc.com">matt@threepillarsholdingsllc.com</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p class="entity">Three Pillars Holdings LLC</p>
+      <p class="meta">North Dakota · 2026</p>
+      <p class="meta" style="margin-top:0.4rem;">threepillarsholdingsllc.com</p>
+      <p class="draft-note">Draft placeholder — not a live site</p>
+    </div>
+  </footer>
+</body>
+</html>
